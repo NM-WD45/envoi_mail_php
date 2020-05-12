@@ -1,3 +1,4 @@
+<?php   
 if (!preg_match("#^[a-z0-9._-]+@(hotmail|live|msn).[a-z]{2,4}$#", $mail))
 {
 $passage_ligne = "\r\n";
@@ -16,24 +17,22 @@ else
 $passage_ligne = "\n";
 }
 //=====Déclaration des messages au format texte et au format HTML.
-$message_txt = 'Bonjour ' . $data['membre_pseudo'] . ', /n/n '. $_SESSION['pseudo'] . 
-' vient de vous envoyer un message privé sur MySpaceFamily.fr.
-' . $titre .' <br/> ' . $message .'
+$message_txt = 'Bonjour ' . $data['prenom'] . ', /n/n  
+message.
 ./n/n 
 A très vite!';
     
-$message_html = '<html><head></head><body><b>Bonjour ' . $data['membre_pseudo'] . ', <br/>'. $_SESSION['pseudo'] . ' 
-vient de vous envoyer un message privé sur <a href:"http://www.myspacefamily.fr"> MySpaceFamily.fr </a>. <br/>
-<strong>' . $titre .' <br/> ' . $message .'
+$message_html = '<html><head></head><body><b>Bonjour ' . $data['prenom'] . ', <br/>
+Message
 <br/><br/>A très vite !.</body></html>';
-<?php   
+
 //=====Création de la boundary
 $boundary = "-----=".md5(rand());
 //=====Définition du sujet.
-$sujet = $_SESSION['pseudo'] . ' vous a envoyé un message';
+$sujet ='[destinataire] sujet';
 //=====Création du header de l'e-mail.
-$header = "From: \"MySpaceFamily\"<no-reply@myspacefamily.fr>".$passage_ligne;
-$header.= "Reply-to: \"WeaponsB\" <no-reply@myspacefamily.fr>".$passage_ligne;
+$header = "From: \"Monsite\"<no-reply@monsite.fr>".$passage_ligne;
+$header.= "Reply-to: \"WeaponsB\" <no-reply@monsite.fr>".$passage_ligne;
 $header.= "MIME-Version: 1.0".$passage_ligne;
 $header.= "Content-Type: multipart/alternative;".$passage_ligne." boundary=\"$boundary\"".$passage_ligne;
 //=====Création du message.
